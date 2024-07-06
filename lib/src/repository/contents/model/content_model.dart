@@ -15,11 +15,4 @@ class ContentModel {
       url: data['url'],
     );
   }
-
-  Map<String, dynamic> toFirestore() {
-    return {
-      'type': type,
-      'url': url,
-    };
-  }
 }

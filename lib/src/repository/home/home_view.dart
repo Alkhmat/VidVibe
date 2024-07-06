@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vidvibe/src/core/firebase/firebase_collections/firebase_collections.dart';
 import 'package:vidvibe/src/repository/auth/register_view.dart';
 import 'package:vidvibe/src/repository/classes/repository_text.dart';
 import 'package:vidvibe/src/repository/contents/cubit/add_content_cubit.dart';
+import 'package:vidvibe/src/repository/contents/model/content_model.dart';
 import 'package:vidvibe/src/repository/contents/video/video_player.dart';
 import 'package:vidvibe/src/repository/home/bookmark_cubit/bookmark_cubit.dart';
 import 'package:vidvibe/src/repository/home/favourite_cubit/likes_cubit.dart';
@@ -121,7 +123,9 @@ class _HomeViewState extends State<HomeView> {
         ],
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('content').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection(FirebaseCollections.content)
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text('Ошибка: ${snapshot.error}'));
@@ -144,7 +148,10 @@ class _HomeViewState extends State<HomeView> {
             );
           }
 
-          final content = snapshot.data?.docs ?? [];
+          final contentDocs = snapshot.data?.docs ?? [];
+          final contentList = contentDocs
+              .map((doc) => ContentModel.fromFirestore(doc))
+              .toList();
 
           return Column(
             children: [
@@ -153,16 +160,13 @@ class _HomeViewState extends State<HomeView> {
                   height: h * 0.899,
                   width: w,
                   child: PageView.builder(
-                    itemCount: content.length,
+                    itemCount: contentList.length,
                     controller: PageController(initialPage: 0),
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) {
-                      final item = content[index];
-                      final data = item.data() as Map<String, dynamic>;
-                      final type = data['type'];
-                      final url = data['url'];
+                      final content = contentList[index];
 
-                      if (type == 'photo') {
+                      if (content.type == 'photo') {
                         return Container(
                           height: h * 0.899,
                           width: w,
@@ -172,7 +176,7 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: CachedNetworkImageProvider(url),
+                              image: CachedNetworkImageProvider(content.url),
                               fit: BoxFit.cover,
                             ),
                             borderRadius: BorderRadius.circular(14),
@@ -180,9 +184,9 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           child: buildContentControls(h, index),
                         );
-                      } else if (type == 'video') {
+                      } else if (content.type == 'video') {
                         return VideoPlayerWidget(
-                          url: url,
+                          url: content.url,
                           height: h * 0.899,
                           width: w,
                         );

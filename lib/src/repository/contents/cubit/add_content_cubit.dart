@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:developer';
 
+import 'package:vidvibe/src/core/firebase/firebase_collections/firebase_collections.dart';
+
 part 'add_content_state.dart';
 
 class AddContentCubit extends Cubit<List<AddContentState>> {
@@ -23,7 +25,8 @@ class AddContentCubit extends Cubit<List<AddContentState>> {
         await storageRef.putFile(file);
         final downloadUrl = await storageRef.getDownloadURL();
 
-        final docRef = await firestore.collection('content').add({
+        final docRef =
+            await firestore.collection(FirebaseCollections.content).add({
           'type': 'photo',
           'url': downloadUrl,
         });
@@ -45,7 +48,8 @@ class AddContentCubit extends Cubit<List<AddContentState>> {
         await storageRef.putFile(file);
         final downloadUrl = await storageRef.getDownloadURL();
 
-        final docRef = await firestore.collection('content').add({
+        final docRef =
+            await firestore.collection(FirebaseCollections.content).add({
           'type': 'video',
           'url': downloadUrl,
         });
@@ -61,9 +65,15 @@ class AddContentCubit extends Cubit<List<AddContentState>> {
   void deleteContent(int index) async {
     final content = state[index];
     if (content is AddContentLoaded) {
-      await firestore.collection('content').doc(content.id).delete();
+      await firestore
+          .collection(FirebaseCollections.content)
+          .doc(content.id)
+          .delete();
     } else if (content is VideoLoaded) {
-      await firestore.collection('content').doc(content.id).delete();
+      await firestore
+          .collection(FirebaseCollections.content)
+          .doc(content.id)
+          .delete();
     }
     state.removeAt(index);
     emit(List.from(state));
@@ -75,7 +85,8 @@ class AddContentCubit extends Cubit<List<AddContentState>> {
 
   Future<void> loadContent() async {
     try {
-      final querySnapshot = await firestore.collection('content').get();
+      final querySnapshot =
+          await firestore.collection(FirebaseCollections.content).get();
       final List<AddContentState> loadedContent = [];
       for (var doc in querySnapshot.docs) {
         final data = doc.data();
