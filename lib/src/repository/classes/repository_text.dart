@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RepositoryText {
-  static const String hometext = 'Connectify';
+  static const String hometext = 'VidVibe';
   static const String registertext = 'Register';
   static const String signuptext = 'sign up';
   static const String signintext = 'sign in';
