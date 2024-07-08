@@ -130,26 +130,21 @@ class _ProfileViewState extends State<ProfileView> {
                       scrollDirection: Axis.horizontal,
                       itemCount: icons.length,
                       itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 85),
-                              child: GestureDetector(
-                                child: IconButton(
-                                  onPressed: () {
-                                    context.read<TapCubit>().tapIndex(index);
-                                  },
-                                  icon: Icon(
-                                    icons[index],
-                                    size: h * 0.04,
-                                    color: state == index
-                                        ? Colors.blue
-                                        : Colors.black,
-                                  ),
-                                ),
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 130),
+                          child: GestureDetector(
+                            child: IconButton(
+                              onPressed: () {
+                                context.read<TapCubit>().tapIndex(index);
+                              },
+                              icon: Icon(
+                                icons[index],
+                                size: h * 0.04,
+                                color:
+                                    state == index ? Colors.blue : Colors.black,
                               ),
                             ),
-                          ],
+                          ),
                         );
                       },
                     );
