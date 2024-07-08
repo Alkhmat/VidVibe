@@ -201,6 +201,11 @@ class _HomeViewState extends State<HomeView> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(14),
                           color: Colors.white24,
+                          image: const DecorationImage(
+                              image: AssetImage(
+                                'assets/img/9276433.png',
+                              ),
+                              fit: BoxFit.cover),
                         ),
                       );
                     },

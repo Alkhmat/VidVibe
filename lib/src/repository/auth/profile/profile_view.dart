@@ -105,7 +105,24 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                     );
                   } else {
-                    return const CircularProgressIndicator();
+                    return Center(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/icons/server.png',
+                            height: h * 0.04,
+                            width: w * 0.04,
+                          ),
+                          Text(
+                            'Server error please try again later!',
+                            style: TextStyle(
+                              fontSize: h * 0.025,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                   }
                 },
               ),
