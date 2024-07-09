@@ -82,12 +82,8 @@ class _ProfileViewState extends State<ProfileView> {
                       child: CircleAvatar(
                         radius: h * 0.1,
                         backgroundColor: Colors.black45,
-                        child: Center(
-                          child: Icon(
-                            Icons.camera_alt_outlined,
-                            size: h * 0.05,
-                            color: Colors.white70,
-                          ),
+                        backgroundImage: const AssetImage(
+                          'assets/img/5569533_2880316.jpg',
                         ),
                       ),
                     );

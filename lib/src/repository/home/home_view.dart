@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidvibe/src/core/firebase/firebase_collections/firebase_collections.dart';
+import 'package:vidvibe/src/repository/auth/auth_cubit/auth_cubit.dart';
+import 'package:vidvibe/src/repository/auth/profile/profile_view.dart';
 import 'package:vidvibe/src/repository/auth/register_view.dart';
 import 'package:vidvibe/src/repository/classes/repository_text.dart';
 import 'package:vidvibe/src/repository/contents/cubit/add_content_cubit.dart';
@@ -104,20 +106,45 @@ class _HomeViewState extends State<HomeView> {
           ),
           Padding(
             padding: const EdgeInsets.only(right: 8),
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const RegisterView(),
-                  ),
-                );
+            child: BlocBuilder<AuthCubit, AuthState>(
+              builder: (context, state) {
+                if (state is AuthAuthenticated) {
+                  return IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfileView(
+                            username: state.user.username,
+                            email: state.user.email,
+                          ),
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.person_outline,
+                      size: h * 0.043,
+                      color: Colors.white,
+                    ),
+                  );
+                } else {
+                  return IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterView(),
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.person_outline,
+                      size: h * 0.043,
+                      color: Colors.white,
+                    ),
+                  );
+                }
               },
-              icon: Icon(
-                Icons.person_outline,
-                size: h * 0.043,
-                color: Colors.white,
-              ),
             ),
           ),
         ],
@@ -160,6 +187,7 @@ class _HomeViewState extends State<HomeView> {
                   height: h * 0.899,
                   width: w,
                   child: PageView.builder(
+                    // reverse: true,
                     itemCount: contentList.length,
                     controller: PageController(initialPage: 0),
                     scrollDirection: Axis.vertical,
@@ -203,7 +231,7 @@ class _HomeViewState extends State<HomeView> {
                           color: Colors.white24,
                           image: const DecorationImage(
                               image: AssetImage(
-                                'assets/img/9276433.png',
+                                'assets/img/9276433.jpg',
                               ),
                               fit: BoxFit.cover),
                         ),

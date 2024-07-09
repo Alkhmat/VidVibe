@@ -52,7 +52,7 @@ class VideoPlayerWidget extends StatelessWidget {
                           color: Colors.white24,
                           image: const DecorationImage(
                               image: AssetImage(
-                                'assets/img/9276427.png',
+                                'assets/img/9276427.jpg',
                               ),
                               fit: BoxFit.cover),
                         ),
