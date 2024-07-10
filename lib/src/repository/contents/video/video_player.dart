@@ -18,7 +18,7 @@ class VideoPlayerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final h = MediaQuery.of(context).size.height;
+    // final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
     return BlocProvider(
       create: (context) => VideoCubit(url)..initialize(),
@@ -40,22 +40,9 @@ class VideoPlayerWidget extends StatelessWidget {
                       child: VideoPlayer(state.controller),
                     )
                   : Center(
-                      child: Container(
-                        height: h * 0.899,
-                        width: w,
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 5,
-                          vertical: 7,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(14),
-                          color: Colors.white24,
-                          image: const DecorationImage(
-                              image: AssetImage(
-                                'assets/img/9276427.jpg',
-                              ),
-                              fit: BoxFit.cover),
-                        ),
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: w * 0.01,
                       ),
                     ),
             ),

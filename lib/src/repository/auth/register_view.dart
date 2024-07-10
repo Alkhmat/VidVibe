@@ -24,6 +24,23 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: Padding(
+          padding: const EdgeInsets.only(right: 340, top: 20),
+          child: IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HomeView(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.arrow_back_ios),
+          ),
+        ),
+      ),
       body: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthAuthenticated) {
@@ -56,23 +73,6 @@ class _RegisterViewState extends State<RegisterView> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 340, top: 20),
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomeView(),
-                            ),
-                          );
-                        },
-                        icon: const Icon(Icons.arrow_back_ios),
-                      ),
-                    ),
-                    SizedBox(
-                      height: h * 0.15,
-                    ),
                     Text(
                       'Registration',
                       style: GoogleFonts.pacifico(
@@ -84,16 +84,19 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                     ),
                     CustomTextFieled(
+                      obscureText: false,
                       label: 'User name',
                       controller: _usernameController,
                       icon: const Icon(Icons.person),
                     ),
                     CustomTextFieled(
+                      obscureText: false,
                       label: 'Email address',
                       controller: _emailController,
                       icon: const Icon(Icons.alternate_email_outlined),
                     ),
                     CustomTextFieled(
+                      obscureText: true,
                       label: 'Password',
                       icon: const Icon(Icons.password_outlined),
                       controller: _passwordController,

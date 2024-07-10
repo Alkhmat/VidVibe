@@ -40,7 +40,7 @@ class _HomeViewState extends State<HomeView> {
             style: GoogleFonts.pacifico(
               textStyle: TextStyle(
                 color: Colors.white,
-                fontSize: h * 0.033,
+                fontSize: h * 0.05,
                 fontWeight: FontWeight.normal,
               ),
             ),
@@ -254,18 +254,20 @@ class _HomeViewState extends State<HomeView> {
         Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 250),
+              padding: const EdgeInsets.only(
+                top: 325,
+              ),
               child: Container(
                 margin: const EdgeInsets.symmetric(
-                  horizontal: 10,
+                  horizontal: 5,
                   vertical: 5,
                 ),
                 height: h * 0.22,
                 decoration: BoxDecoration(
-                  color: Colors.black54,
+                  color: Colors.white24,
                   borderRadius: BorderRadius.circular(25),
                 ),
-                width: h * 0.08,
+                width: h * 0.06,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 
 class CustomTextFieled extends StatelessWidget {
   final String? label;
+  final bool obscureText;
   final Widget? suffixIcon;
   final Icon? icon;
   final TextEditingController? controller;
   const CustomTextFieled(
-      {super.key, this.icon, this.label, this.controller, this.suffixIcon});
+      {super.key,
+      required this.obscureText,
+      this.icon,
+      this.label,
+      this.controller,
+      this.suffixIcon});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
       child: TextFormField(
+        obscureText: obscureText,
         controller: controller,
         style: const TextStyle(
             fontWeight: FontWeight.normal,
