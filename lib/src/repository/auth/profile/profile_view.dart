@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vidvibe/src/repository/auth/profile/cubit/image_cubit.dart';
 import 'package:vidvibe/src/repository/auth/profile/cubit_2/tap_cubit.dart';
+import 'package:vidvibe/src/repository/auth/profile/setting/setting_profile_view.dart';
 import 'package:vidvibe/src/repository/home/home_view.dart';
 
 class ProfileView extends StatefulWidget {
@@ -52,7 +53,14 @@ class _ProfileViewState extends State<ProfileView> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SettingProfileView(),
+                ),
+              );
+            },
             icon: Icon(
               Icons.settings_outlined,
               size: h * 0.032,

@@ -8,6 +8,7 @@ class RepositoryText {
   static const String logintext = 'Login';
   static const String subhometext = 'be among your own';
   static const String comments = 'Comments';
+  static const String setting = 'Settings';
   static const String subscribe = 'Subscribe';
 }
 
