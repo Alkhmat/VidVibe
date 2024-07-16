@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vidvibe/src/repository/auth/profile/cubit/image_cubit.dart';
 import 'package:vidvibe/src/repository/auth/profile/cubit_2/tap_cubit.dart';
-import 'package:vidvibe/src/repository/auth/profile/setting/setting_profile_view.dart';
 import 'package:vidvibe/src/repository/home/home_view.dart';
 
 class ProfileView extends StatefulWidget {
