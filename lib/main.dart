@@ -9,6 +9,7 @@ import 'package:vidvibe/src/repository/auth/profile/setting/setting_profile_view
 import 'package:vidvibe/src/repository/contents/cubit/add_content_cubit.dart';
 import 'package:vidvibe/src/repository/home/bookmark_cubit/bookmark_cubit.dart';
 import 'package:vidvibe/src/repository/home/favourite_cubit/likes_cubit.dart';
+import 'package:vidvibe/src/repository/home/home_view.dart';
 import 'package:vidvibe/src/repository/home/load_cubit/load_cubit.dart';
 // import 'package:vidvibe/src/repository/welcome/welcome_view.dart';
 

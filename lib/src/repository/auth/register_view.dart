@@ -73,6 +73,9 @@ class _RegisterViewState extends State<RegisterView> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(
+                      height: h * 0.3,
+                    ),
                     Text(
                       'Registration',
                       style: GoogleFonts.pacifico(
@@ -120,7 +123,7 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                     ),
                     SizedBox(
-                      height: h * 0.15,
+                      height: h * 0.3,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

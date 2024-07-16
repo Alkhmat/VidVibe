@@ -78,6 +78,9 @@ class LogInView extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(
+                      height: h * 0.3,
+                    ),
                     Text(
                       RepositoryText.logintext,
                       style: GoogleFonts.pacifico(
@@ -116,7 +119,7 @@ class LogInView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: h * 0.2,
+                      height: h * 0.3,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
