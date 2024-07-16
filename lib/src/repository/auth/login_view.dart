@@ -119,7 +119,7 @@ class LogInView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: h * 0.3,
+                      height: h * 0.18,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

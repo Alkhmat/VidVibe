@@ -11,6 +11,7 @@ class SettingProfileView extends StatelessWidget {
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {},
@@ -41,10 +42,13 @@ class SettingProfileView extends StatelessWidget {
                 Container(
                   height: h * 0.1,
                   width: w,
-                  color: Colors.amber,
+                  decoration: BoxDecoration(
+                    color: Colors.black26,
+                    borderRadius: BorderRadius.circular(24),
+                  ),
                 ),
                 Positioned(
-                  top: 10,
+                  top: 8,
                   right: 20,
                   child: Image.asset(
                     'assets/icons/delete_10024290.png',

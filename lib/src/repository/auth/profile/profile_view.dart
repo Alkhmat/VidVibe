@@ -44,29 +44,6 @@ class _ProfileViewState extends State<ProfileView> {
             color: Colors.black,
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.chat_bubble_outline_rounded,
-              size: h * 0.032,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SettingProfileView(),
-                ),
-              );
-            },
-            icon: Icon(
-              Icons.settings_outlined,
-              size: h * 0.032,
-            ),
-          ),
-        ],
         title: Text(
           widget.username,
           style: TextStyle(

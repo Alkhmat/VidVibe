@@ -123,7 +123,7 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                     ),
                     SizedBox(
-                      height: h * 0.3,
+                      height: h * 0.18,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
