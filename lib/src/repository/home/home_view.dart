@@ -366,12 +366,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:vidvibe/src/repository/auth/auth_cubit/auth_cubit.dart';
-import 'package:vidvibe/src/repository/auth/profile/profile_view.dart';
-import 'package:vidvibe/src/repository/auth/register_view.dart';
-import 'package:vidvibe/src/repository/classes/repository_text.dart';
-import 'package:vidvibe/src/repository/contents/cubit/add_content_cubit.dart';
+// import 'package:google_fonts/google_fonts.dart';
+// import 'package:vidvibe/src/repository/auth/auth_cubit/auth_cubit.dart';
+// import 'package:vidvibe/src/repository/auth/profile/profile_view.dart';
+// import 'package:vidvibe/src/repository/auth/register_view.dart';
+// import 'package:vidvibe/src/repository/classes/repository_text.dart';
+// import 'package:vidvibe/src/repository/contents/cubit/add_content_cubit.dart';
 import 'package:vidvibe/src/repository/contents/model/content_model.dart';
 import 'package:vidvibe/src/repository/contents/video/video_player.dart';
 import 'package:vidvibe/src/repository/home/bookmark_cubit/bookmark_cubit.dart';
@@ -398,132 +398,133 @@ class _HomeViewState extends State<HomeView> {
     final w = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      // bottomNavigationBar: const HomeBottom(),
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        toolbarHeight: h * 0.07,
-        leadingWidth: w,
-        backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 8),
-          child: Text(
-            RepositoryText.hometext,
-            style: GoogleFonts.pacifico(
-              textStyle: TextStyle(
-                color: Colors.white,
-                fontSize: h * 0.05,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: PopupMenuButton<int>(
-              color: Colors.black,
-              onSelected: (value) {
-                if (value == 1) {
-                  context.read<AddContentCubit>().addPhoto();
-                } else if (value == 2) {
-                  context.read<AddContentCubit>().addVideo();
-                }
-              },
-              icon: Icon(
-                Icons.add,
-                size: h * 0.043,
-                color: Colors.white,
-              ),
-              itemBuilder: (context) => [
-                PopupMenuItem<int>(
-                  value: 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Add photo",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Image.asset(
-                          'assets/icons/photo.png',
-                          color: Colors.white,
-                          width: 20,
-                          height: 20,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                PopupMenuItem<int>(
-                  value: 2,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Add media",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Image.asset(
-                          'assets/icons/video.png',
-                          color: Colors.white,
-                          width: 20,
-                          height: 20,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: BlocBuilder<AuthCubit, AuthState>(
-              builder: (context, state) {
-                if (state is AuthAuthenticated) {
-                  return IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProfileView(
-                            username: state.user.username,
-                            email: state.user.email,
-                          ),
-                        ),
-                      );
-                    },
-                    icon: Icon(
-                      Icons.person_outline,
-                      size: h * 0.043,
-                      color: Colors.white,
-                    ),
-                  );
-                } else {
-                  return IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterView(),
-                        ),
-                      );
-                    },
-                    icon: Icon(
-                      Icons.person_outline,
-                      size: h * 0.043,
-                      color: Colors.white,
-                    ),
-                  );
-                }
-              },
-            ),
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   toolbarHeight: h * 0.07,
+      //   leadingWidth: w,
+      //   backgroundColor: Colors.transparent,
+      //   leading: Padding(
+      //     padding: const EdgeInsets.only(left: 8),
+      //     child: Text(
+      //       RepositoryText.hometext,
+      //       style: GoogleFonts.pacifico(
+      //         textStyle: TextStyle(
+      //           color: Colors.white,
+      //           fontSize: h * 0.05,
+      //           fontWeight: FontWeight.normal,
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      //   actions: [
+      //     Padding(
+      //       padding: const EdgeInsets.only(right: 8),
+      //       child: PopupMenuButton<int>(
+      //         color: Colors.black,
+      //         onSelected: (value) {
+      //           if (value == 1) {
+      //             context.read<AddContentCubit>().addPhoto();
+      //           } else if (value == 2) {
+      //             context.read<AddContentCubit>().addVideo();
+      //           }
+      //         },
+      //         icon: Icon(
+      //           Icons.add,
+      //           size: h * 0.043,
+      //           color: Colors.white,
+      //         ),
+      //         itemBuilder: (context) => [
+      //           PopupMenuItem<int>(
+      //             value: 1,
+      //             child: Row(
+      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //               children: [
+      //                 const Text(
+      //                   "Add photo",
+      //                   style: TextStyle(color: Colors.white),
+      //                 ),
+      //                 Padding(
+      //                   padding: const EdgeInsets.only(left: 5),
+      //                   child: Image.asset(
+      //                     'assets/icons/photo.png',
+      //                     color: Colors.white,
+      //                     width: 20,
+      //                     height: 20,
+      //                   ),
+      //                 )
+      //               ],
+      //             ),
+      //           ),
+      //           PopupMenuItem<int>(
+      //             value: 2,
+      //             child: Row(
+      //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //               children: [
+      //                 const Text(
+      //                   "Add media",
+      //                   style: TextStyle(color: Colors.white),
+      //                 ),
+      //                 Padding(
+      //                   padding: const EdgeInsets.only(left: 5),
+      //                   child: Image.asset(
+      //                     'assets/icons/video.png',
+      //                     color: Colors.white,
+      //                     width: 20,
+      //                     height: 20,
+      //                   ),
+      //                 )
+      //               ],
+      //             ),
+      //           ),
+      //         ],
+      //       ),
+      //     ),
+      //     Padding(
+      //       padding: const EdgeInsets.only(right: 8),
+      //       child: BlocBuilder<AuthCubit, AuthState>(
+      //         builder: (context, state) {
+      //           if (state is AuthAuthenticated) {
+      //             return IconButton(
+      //               onPressed: () {
+      //                 Navigator.push(
+      //                   context,
+      //                   MaterialPageRoute(
+      //                     builder: (context) => ProfileView(
+      //                       username: state.user.username,
+      //                       email: state.user.email,
+      //                     ),
+      //                   ),
+      //                 );
+      //               },
+      //               icon: Icon(
+      //                 Icons.person_outline,
+      //                 size: h * 0.043,
+      //                 color: Colors.white,
+      //               ),
+      //             );
+      //           } else {
+      //             return IconButton(
+      //               onPressed: () {
+      //                 Navigator.push(
+      //                   context,
+      //                   MaterialPageRoute(
+      //                     builder: (context) => const RegisterView(),
+      //                   ),
+      //                 );
+      //               },
+      //               icon: Icon(
+      //                 Icons.person_outline,
+      //                 size: h * 0.043,
+      //                 color: Colors.white,
+      //               ),
+      //             );
+      //           }
+      //         },
+      //       ),
+      //     ),
+      //   ],
+      // ),
       body: RefreshIndicator(
         color: Colors.white,
         backgroundColor: Colors.black,
@@ -624,7 +625,7 @@ class _HomeViewState extends State<HomeView> {
           children: [
             Padding(
               padding: const EdgeInsets.only(
-                top: 325,
+                top: 355,
               ),
               child: Container(
                 margin: const EdgeInsets.symmetric(

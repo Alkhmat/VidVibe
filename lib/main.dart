@@ -12,6 +12,7 @@ import 'package:vidvibe/src/repository/home/favourite_cubit/likes_cubit.dart';
 import 'package:vidvibe/src/repository/home/home_view.dart';
 // import 'package:vidvibe/src/repository/home/home_view.dart';
 import 'package:vidvibe/src/repository/home/load_cubit/load_cubit.dart';
+// import 'package:vidvibe/src/repository/navbar/bottom_cubit/bottom_cubit.dart';
 // import 'package:vidvibe/src/repository/welcome/welcome_view.dart';
 
 void main() async {
@@ -36,6 +37,9 @@ class VidVibe extends StatelessWidget {
         BlocProvider(
           create: (context) => TapCubit(),
         ),
+        // BlocProvider(
+        //   create: (context) => BottomNavCubit(),
+        // ),
         BlocProvider(
           create: (context) => FavoriteCubit(),
         ),
